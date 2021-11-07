@@ -7,6 +7,8 @@ class Shortcode{
     public static $taxs = array();
     public static $term_name = 'category';
     public static $post_type = 'post';
+    public static $posts_per_page = -1;
+    public static $term_link = 'on';
     public static $atts = array();
 
 
@@ -18,6 +20,12 @@ class Shortcode{
         if( isset( $atts['taxs'] ) && ! empty( $atts['taxs'] ) ){
             self::$taxs = self::attr_to_arr('taxs');
         }
+        if( empty( self::$atts ) || ! is_array( self::$atts ) ){
+            self::$atts = array();
+        }else{
+            //Populate ATTS using manipulae_atts()
+            self::manipulae_atts();
+        }
 
         //Generate for all Cate
         if( empty( self::$taxs ) ){
@@ -26,12 +34,20 @@ class Shortcode{
 
 
         if( ! is_array( self::$taxs ) || count( self::$taxs ) < 1 ) return;
-
-        if( empty( self::$atts ) || ! is_array( self::$atts ) ){
-            self::$atts = array();
-        }
-
+            
         return self::generate_html();
+    }
+
+    public static function manipulae_atts(){
+        // var_dump(self::$post_type);
+        self::$post_type = isset( self::$atts['post_type'] ) && ! empty( self::$atts['post_type'] ) ? self::$atts['post_type']: self::$post_type;
+        if( self::$post_type == 'product' ){
+            self::$term_name = 'product_cat';
+        }
+        
+        self::$term_name = isset( self::$atts['term_name'] ) && ! empty( self::$atts['term_name'] ) ? self::$atts['term_name']: self::$term_name;
+        self::$posts_per_page = isset( self::$atts['posts_per_page'] ) && ! empty( self::$atts['posts_per_page'] ) ? self::$atts['posts_per_page']: self::$posts_per_page;
+        self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
     }
 
     public static function attr_to_arr($atts_attr = 'taxs'){
@@ -53,6 +69,7 @@ class Shortcode{
 
 
     public static function get_taxonomies(){
+
         $taxonomies = get_terms(
             array(
                 'taxonomy' => self::$term_name,//'category',
@@ -91,10 +108,19 @@ class Shortcode{
     public static function taxonomy_markup( $cat_id = false ){
         if( ! $cat_id ) return;
         if(empty( self::get_taxonomy_name( $cat_id ) )) echo "The Taxonomy ID:$cat_id not found";
+        $term_link = self::$term_link == 'on' ? true : false;
         ?>
         <div class="each-taxonomy-item-wrapper">
             <div class="each-item-inside">
-                <h3 class="item-heading item-heading-<?php echo esc_attr( $cat_id ); ?>"><?php echo esc_html( self::get_taxonomy_name( $cat_id ) ) ?></h3>
+                <h3 class="item-heading item-heading-<?php echo esc_attr( $cat_id ); ?>">
+                    <?php if( $term_link ){?>
+                    <a href="<?php echo esc_url( get_term_link( $cat_id ) ); ?>" class="item-heading-link" target="_blank">
+                    <?php } 
+                    echo esc_html( self::get_taxonomy_name( $cat_id ) );
+                    if( $term_link ){ ?>
+                    </a>
+                    <?php } ?>
+                </h3>
                 <?php
                 self::the_post_list_markup( $cat_id );
                 ?>
@@ -116,11 +142,11 @@ class Shortcode{
     }
 
     public static function the_post_list_markup( $cat_id ){
-        
+
         $args = array(
             'post_type'             => self::$post_type,
             'post_status'           => 'publish',
-            'posts_per_page'        => -1,
+            'posts_per_page'        => self::$posts_per_page,//-1,
             'tax_query'             => array(
                 array(
                     'taxonomy'  => self::$term_name,
