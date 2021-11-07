@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: AAA WP Post Classfied for making Docs
+ * Plugin Name: WP Post Classfied for making Docs
  * Plugin URI: #
- * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']
+ * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * 
