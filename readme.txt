@@ -1,4 +1,4 @@
-=== WP Post Classfied for making Docs, Site map, POST List ===
+=== Post Classfied for making Docs, Site map, POST List ===
 Contributors: codersaiful
 Tags: wp post, post list, product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
