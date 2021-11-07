@@ -3,7 +3,7 @@
 /**
  * Plugin Name: AAA WP Post Classfied for making Docs
  * Plugin URI: #
- * Description: To display all post based on a shortcode [WPPCD_Post cats='123,322']
+ * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * 

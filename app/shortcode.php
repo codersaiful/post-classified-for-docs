@@ -4,55 +4,55 @@ namespace WPPCD;
 use WP_Query;
 
 class Shortcode{
-    public static $cats = array();
+    public static $taxs = array();
     public static $term_name = 'category';
     public static $post_type = 'post';
     public static $atts = array();
 
 
-    public static function attr_to_arr($atts_attr = 'cats'){
+    public static function attr_to_arr($atts_attr = 'taxs'){
         
         $atts = self::$atts;
-        $catstr = $atts[$atts_attr];
-        if( ! is_string( $catstr ) ) return;
+        $taxstr = $atts[$atts_attr];
+        if( ! is_string( $taxstr ) ) return;
 
-        $catstr = rtrim($catstr,',');
-        $cats = explode(',',$catstr);
+        $taxstr = rtrim($taxstr,',');
+        $taxs = explode(',',$taxstr);
 
-        $cats = array_filter($cats);
-        $cats = array_map(function($item){
+        $taxs = array_filter($taxs);
+        $taxs = array_map(function($item){
             return (int) $item;
-        },$cats);
-        return $cats;
+        },$taxs);
+        return $taxs;
     }
 
     public static function init( $atts ){
         
         self::$atts = $atts;
-        if( isset( $atts['cats'] ) && ! empty( $atts['cats'] ) ){
-            self::$cats = self::attr_to_arr('cats');
+        if( isset( $atts['taxs'] ) && ! empty( $atts['taxs'] ) ){
+            self::$taxs = self::attr_to_arr('taxs');
         }
 
         //Generate for all Cate
-        if( empty( self::$cats ) ){
-            self::$cats = self::get_categories();
+        if( empty( self::$taxs ) ){
+            self::$taxs = self::get_categories();
         }
 
-        //self::$cats = self::get_cat_modified_ids();
+        //self::$taxs = self::get_cat_modified_ids();
 
-        if( ! is_array( self::$cats ) || count( self::$cats ) < 1 ) return;
+        if( ! is_array( self::$taxs ) || count( self::$taxs ) < 1 ) return;
 
         
         return self::generate_html();
     }
 
     public static function get_cat_modified_ids(){
-        $modified_cats = self::$cats;
+        $modified_taxs = self::$taxs;
 
 
 
 
-        return apply_filters( 'wppcd_cats_list_arr', $modified_cats , self::$atts );
+        return apply_filters( 'wppcd_taxs_list_arr', $modified_taxs , self::$atts );
 
     }
 
@@ -62,11 +62,11 @@ class Shortcode{
                 'taxonomy' => 'category',
             )
         );
-        $o_cats = array();
+        $o_taxs = array();
         foreach( $categories as $category ){
-            $o_cats[$category->term_id] = $category->term_id;
+            $o_taxs[$category->term_id] = $category->term_id;
         }
-        return $o_cats;
+        return $o_taxs;
     }
 
     /**
@@ -75,7 +75,7 @@ class Shortcode{
     public static function generate_html(){
         ob_start();
 
-        foreach( self::$cats as $cat_id ){
+        foreach( self::$taxs as $cat_id ){
             ?>
             <div class="wppcd-main-wrapper docs-wrapper">
                 <div class="wppcd-inside-wrapper">
