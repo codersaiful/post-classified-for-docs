@@ -14,7 +14,6 @@
  * WC tested up to:      5.6.2
  */
 
-use TierPricingTable\Integrations\Plugins\WCPA;
 
 if ( !defined( 'ABSPATH' ) ) {
     die();
