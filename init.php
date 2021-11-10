@@ -1,27 +1,26 @@
 <?php
 
 /**
- * Plugin Name: AAA WP Post Classfied for making Docs
+ * Plugin Name: Post Classfied for making Docs, Site map, POST List
  * Plugin URI: #
- * Description: To display all post based on a shortcode [WPPCD_Post cats='123,322']
+ * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * 
- * Version: 1.0.0
+ * Version: 1.0
  * Requires at least:    4.0.0
  * Tested up to:         5.8
  * WC requires at least: 4.0
  * WC tested up to:      5.6.2
  */
 
-use TierPricingTable\Integrations\Plugins\WCPA;
 
 if ( !defined( 'ABSPATH' ) ) {
     die();
 }
 
 if ( !defined( 'WPPCD_VERSION' ) ) {
-    define( 'WPPCD_VERSION', '1.0.0');
+    define( 'WPPCD_VERSION', '1.0.1');
 }
 if( !defined( 'WPPCD_CAPABILITY' ) ){
     $wppcd_addons_capability = apply_filters( 'wppcd_addons_menu_capability', 'manage_woocommerce' );

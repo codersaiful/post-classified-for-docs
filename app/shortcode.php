@@ -4,69 +4,82 @@ namespace WPPCD;
 use WP_Query;
 
 class Shortcode{
-    public static $cats = array();
+    public static $taxs = array();
     public static $term_name = 'category';
     public static $post_type = 'post';
+    public static $posts_per_page = -1;
+    public static $term_link = 'on';
     public static $atts = array();
 
 
-    public static function attr_to_arr($atts_attr = 'cats'){
-        
-        $atts = self::$atts;
-        $catstr = $atts[$atts_attr];
-        if( ! is_string( $catstr ) ) return;
-
-        $catstr = rtrim($catstr,',');
-        $cats = explode(',',$catstr);
-
-        $cats = array_filter($cats);
-        $cats = array_map(function($item){
-            return (int) $item;
-        },$cats);
-        return $cats;
-    }
-
+    
     public static function init( $atts ){
         
         self::$atts = $atts;
-        if( isset( $atts['cats'] ) && ! empty( $atts['cats'] ) ){
-            self::$cats = self::attr_to_arr('cats');
+
+        if( isset( $atts['taxs'] ) && ! empty( $atts['taxs'] ) ){
+            self::$taxs = self::attr_to_arr('taxs');
+        }
+        if( empty( self::$atts ) || ! is_array( self::$atts ) ){
+            self::$atts = array();
+        }else{
+            //Populate ATTS using manipulae_atts()
+            self::manipulae_atts();
         }
 
         //Generate for all Cate
-        if( empty( self::$cats ) ){
-            self::$cats = self::get_categories();
+        if( empty( self::$taxs ) ){
+            self::$taxs = self::get_taxonomies();
         }
 
-        //self::$cats = self::get_cat_modified_ids();
 
-        if( ! is_array( self::$cats ) || count( self::$cats ) < 1 ) return;
-
-        
+        if( ! is_array( self::$taxs ) || count( self::$taxs ) < 1 ) return;
+            
         return self::generate_html();
     }
 
-    public static function get_cat_modified_ids(){
-        $modified_cats = self::$cats;
-
-
-
-
-        return apply_filters( 'wppcd_cats_list_arr', $modified_cats , self::$atts );
-
+    public static function manipulae_atts(){
+        // var_dump(self::$post_type);
+        self::$post_type = isset( self::$atts['post_type'] ) && ! empty( self::$atts['post_type'] ) ? self::$atts['post_type']: self::$post_type;
+        if( self::$post_type == 'product' ){
+            self::$term_name = 'product_cat';
+        }
+        
+        self::$term_name = isset( self::$atts['term_name'] ) && ! empty( self::$atts['term_name'] ) ? self::$atts['term_name']: self::$term_name;
+        self::$posts_per_page = isset( self::$atts['posts_per_page'] ) && ! empty( self::$atts['posts_per_page'] ) ? self::$atts['posts_per_page']: self::$posts_per_page;
+        self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
     }
 
-    public static function get_categories(){
-        $categories = get_terms(
+    public static function attr_to_arr($atts_attr = 'taxs'){
+        
+        $atts = self::$atts;
+        $taxstr = $atts[$atts_attr];
+        if( ! is_string( $taxstr ) ) return;
+
+        $taxstr = rtrim($taxstr,',');
+        $taxs = explode(',',$taxstr);
+
+        $taxs = array_filter($taxs);
+        $taxs = array_map(function($item){
+            return (int) $item;
+        },$taxs);
+        return $taxs;
+    }
+
+
+
+    public static function get_taxonomies(){
+
+        $taxonomies = get_terms(
             array(
-                'taxonomy' => 'category',
+                'taxonomy' => self::$term_name,//'category',
             )
         );
-        $o_cats = array();
-        foreach( $categories as $category ){
-            $o_cats[$category->term_id] = $category->term_id;
+        $o_taxs = array();
+        foreach( $taxonomies as $taxonomy ){
+            $o_taxs[$taxonomy->term_id] = $taxonomy->term_id;
         }
-        return $o_cats;
+        return $o_taxs;
     }
 
     /**
@@ -75,7 +88,7 @@ class Shortcode{
     public static function generate_html(){
         ob_start();
 
-        foreach( self::$cats as $cat_id ){
+        foreach( self::$taxs as $cat_id ){
             ?>
             <div class="wppcd-main-wrapper docs-wrapper">
                 <div class="wppcd-inside-wrapper">
@@ -95,10 +108,19 @@ class Shortcode{
     public static function taxonomy_markup( $cat_id = false ){
         if( ! $cat_id ) return;
         if(empty( self::get_taxonomy_name( $cat_id ) )) echo "The Taxonomy ID:$cat_id not found";
+        $term_link = self::$term_link == 'on' ? true : false;
         ?>
         <div class="each-taxonomy-item-wrapper">
             <div class="each-item-inside">
-                <h3 class="item-heading <?php echo esc_attr( $cat_id ); ?>"><?php echo esc_html( self::get_taxonomy_name( $cat_id ) ) ?></h3>
+                <h3 class="item-heading item-heading-<?php echo esc_attr( $cat_id ); ?>">
+                    <?php if( $term_link ){?>
+                    <a href="<?php echo esc_url( get_term_link( $cat_id ) ); ?>" class="item-heading-link" target="_blank">
+                    <?php } 
+                    echo esc_html( self::get_taxonomy_name( $cat_id ) );
+                    if( $term_link ){ ?>
+                    </a>
+                    <?php } ?>
+                </h3>
                 <?php
                 self::the_post_list_markup( $cat_id );
                 ?>
@@ -110,20 +132,21 @@ class Shortcode{
 
     public static function get_taxonomy_name( $cat_id ) {
         $cat_id   = (int) $cat_id;
-        $category = get_term( $cat_id, self::$term_name );
+        $taxonomy = get_term( $cat_id, self::$term_name );
     
-        if ( ! $category || is_wp_error( $category ) ) {
+        if ( ! $taxonomy || is_wp_error( $taxonomy ) ) {
             return '';
         }
     
-        return $category->name;
+        return $taxonomy->name;
     }
 
     public static function the_post_list_markup( $cat_id ){
+
         $args = array(
             'post_type'             => self::$post_type,
             'post_status'           => 'publish',
-            'posts_per_page'        => -1,
+            'posts_per_page'        => self::$posts_per_page,//-1,
             'tax_query'             => array(
                 array(
                     'taxonomy'  => self::$term_name,
@@ -134,6 +157,16 @@ class Shortcode{
 
         );
 
+        /**
+         * Query Args Generate and Handle using $atts
+         * 
+         * We will access args index key from $atts key
+         * 
+         * @since 1.0.0.0
+         */
+        $this_atts = self::$atts;
+
+        $args = apply_filters('wppcd_query_args', $args);
         $query = new WP_Query( $args );
         
         if( $query->have_posts() ):
