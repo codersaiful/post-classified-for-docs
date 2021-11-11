@@ -53,12 +53,12 @@ if ( !defined( 'WPPCD_BASE_DIR' ) ) {
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
+//Including File
+include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
+include_once WPPCD_BASE_DIR . '/includes/functions.php';
+
 include_once WPPCD_BASE_DIR . '/app/shortcode.php';
 
 add_shortcode('WPPCD_Post',['WPPCD\Shortcode','init']);
 
-//Including File
-include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
-include_once WPPCD_BASE_DIR . '/includes/functions.php';
-include_once WPPCD_BASE_DIR . '/includes/action-hook.php';
 

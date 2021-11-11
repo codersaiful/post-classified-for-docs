@@ -45,7 +45,6 @@ if( !function_exists( 'wppcd_admin_enqueue_scripts' ) ){
     function wppcd_admin_enqueue_scripts( ) {
 
         wp_enqueue_style( 'wppcd-admin', WPPCD_BASE_URL . 'assets/css/admin-style.css', array(), '1.0.0', 'all' );
-        wp_enqueue_script( 'wppcd-admin', WPPCD_BASE_URL . 'assets/js/admin-script.js', array( 'jquery' ), '1.0.0', true );
     }
 }
 add_action( 'admin_enqueue_scripts', 'wppcd_admin_enqueue_scripts' );
