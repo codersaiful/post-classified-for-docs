@@ -9,9 +9,26 @@
  * 
  * Version: 1.0
  * Requires at least:    4.0.0
- * Tested up to:         5.8.1
+ * Tested up to:         5.8.2
  * WC requires at least: 4.0
  * WC tested up to:      5.6.2
+ * 
+ * *********************
+ * SHORTCODE EXAMPLE: 
+ * 
+ * [WPPCD_Post taxs='123,322']
+ * 
+ * [WPPCD_Post]
+ * 
+ * [WPPCD_Post post_type='product']
+ * 
+ * [WPPCD_Post post_type='product' term_name='product_tag']
+ * 
+ * [WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
+ * 
+ * *********************
+ * 
+ * Text Domain: wppcd
  */
 
 
@@ -36,10 +53,10 @@ if ( !defined( 'WPPCD_BASE_NAME' ) ) {
 }
 
 if ( !defined( 'WPPCD_MENU_SLUG' ) ) {
-    define( 'WPPCD_MENU_SLUG', 'UltraAddons-addons' );
+    define( 'WPPCD_MENU_SLUG', 'post-classified-for-docs' );
 }
 if( !defined( 'WPPCD_PLUGIN' ) ){
-    define( 'WPPCD_PLUGIN', 'UltraAddons-addons/init.php' );
+    define( 'WPPCD_PLUGIN', 'post-classified-for-docs/init.php' );
 }
 
 
@@ -53,12 +70,12 @@ if ( !defined( 'WPPCD_BASE_DIR' ) ) {
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
+//Including File
+include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
+include_once WPPCD_BASE_DIR . '/includes/functions.php';
+
 include_once WPPCD_BASE_DIR . '/app/shortcode.php';
 
 add_shortcode('WPPCD_Post',['WPPCD\Shortcode','init']);
 
-//Including File
-include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
-include_once WPPCD_BASE_DIR . '/includes/functions.php';
-include_once WPPCD_BASE_DIR . '/includes/action-hook.php';
 

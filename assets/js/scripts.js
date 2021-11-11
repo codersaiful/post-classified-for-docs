@@ -1,8 +1,4 @@
-jQuery(function ($) {
-    'use strict';
-    $(document).ready(function () {
-        //Write your Script Here
-        //Only for Frontend
-        
-    });
-});
+/**
+ * For developer uses
+ */
+console.log( WPPCD_DATA );
