@@ -15,20 +15,20 @@
 
 **Shortcode Example**
 
-`[WPPCD_Post]`
-Post title with link from WordPress default post with all category name.
+* `[WPPCD_Post]`<br>
+ Post title with link from WordPress default post with all category name.
 
-`[WPPCD_Post taxs='123,322']`
-Here: 123,322 are category ID. Mean: Taxnomy ID.
+* `[WPPCD_Post taxs='123,322']`<br>
+ Here: 123,322 are category ID. Mean: Taxnomy ID.
 
-`[WPPCD_Post post_type='product']`
-It will display all product title with link with WooCommerce caegory classified.
+* `[WPPCD_Post post_type='product']`<br>
+ It will display all product title with link with WooCommerce caegory classified.
 
-`[WPPCD_Post post_type='product' term_name='product_tag']`
+*  `[WPPCD_Post post_type='product' term_name='product_tag']`<br>
 It's depend on WooCommerce, product will display from product, based on WooCommerce tag(product_tag).
 
-Example with all attr:
-`[WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']`
+* Example with all attr:<br>
+ `[WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']`
 
 **Important feature**
 
