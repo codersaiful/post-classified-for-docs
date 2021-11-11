@@ -142,7 +142,7 @@ class Shortcode{
      */
     public static function taxonomy_markup( $taxonomy_id = false ){
         if( ! $taxonomy_id ) return;
-        if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo "The Taxonomy ID:$taxonomy_id not found";
+        if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo esc_html__( sprintf( "The Taxonomy ID:%s not found", $taxonomy_id ), 'wppcd');;
         $term_link = self::$term_link == 'on' ? true : false;
         ?>
         <div class="each-taxonomy-item-wrapper">

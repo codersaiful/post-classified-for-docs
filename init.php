@@ -9,9 +9,26 @@
  * 
  * Version: 1.0
  * Requires at least:    4.0.0
- * Tested up to:         5.8.1
+ * Tested up to:         5.8.2
  * WC requires at least: 4.0
  * WC tested up to:      5.6.2
+ * 
+ * *********************
+ * SHORTCODE EXAMPLE: 
+ * 
+ * [WPPCD_Post taxs='123,322']
+ * 
+ * [WPPCD_Post]
+ * 
+ * [WPPCD_Post post_type='product']
+ * 
+ * [WPPCD_Post post_type='product' term_name='product_tag']
+ * 
+ * [WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
+ * 
+ * *********************
+ * 
+ * Text Domain: wppcd
  */
 
 
