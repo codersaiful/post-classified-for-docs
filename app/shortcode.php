@@ -3,6 +3,16 @@ namespace WPPCD;
 
 use WP_Query;
 
+/**
+ * Display post using shortcode
+ * 
+ * Managing post based on shortcode atts
+ * 
+ * We will collect query data from shortcode
+ * 
+ * @since 1.0
+ * @author Saiful Islam<codersaiful@gmail.com>
+ */
 class Shortcode{
     public static $taxs = array();
     public static $term_name = 'category';
@@ -39,7 +49,7 @@ class Shortcode{
     }
 
     public static function manipulae_atts(){
-        // var_dump(self::$post_type);
+        
         self::$post_type = isset( self::$atts['post_type'] ) && ! empty( self::$atts['post_type'] ) ? self::$atts['post_type']: self::$post_type;
         if( self::$post_type == 'product' ){
             self::$term_name = 'product_cat';
@@ -50,6 +60,12 @@ class Shortcode{
         self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
     }
 
+    /**
+     * Attr srting like taxs='1,2,32,45' to convert to array
+     *
+     * @param string $atts_attr taxs attts attr
+     * @return void
+     */
     public static function attr_to_arr($atts_attr = 'taxs'){
         
         $atts = self::$atts;
@@ -68,6 +84,11 @@ class Shortcode{
 
 
 
+    /**
+     * Get taxonomy list based on selected term name. such: category,tag,product_tag etc
+     *
+     * @return Array
+     */
     public static function get_taxonomies(){
 
         $taxonomies = get_terms(
@@ -84,16 +105,24 @@ class Shortcode{
 
     /**
      * Generating full HTML
+     * Full content will be generate from here
+     * 
+     * 
+     * ************************
+     * All other void method will call here
+     * ************************
+     *
+     * @return void
      */
     public static function generate_html(){
         ob_start();
 
-        foreach( self::$taxs as $cat_id ){
+        foreach( self::$taxs as $taxonomy_id ){
             ?>
             <div class="wppcd-main-wrapper docs-wrapper">
                 <div class="wppcd-inside-wrapper">
                 <?php
-                self::taxonomy_markup( $cat_id );
+                self::taxonomy_markup( $taxonomy_id );
                 ?>
                 
                 </div><!-- /.wppcd-inside-wrapper -->
@@ -105,24 +134,30 @@ class Shortcode{
         return ob_get_clean();
     }
 
-    public static function taxonomy_markup( $cat_id = false ){
-        if( ! $cat_id ) return;
-        if(empty( self::get_taxonomy_name( $cat_id ) )) echo "The Taxonomy ID:$cat_id not found";
+    /**
+     * Each taxonomy HTML Markub will generate here
+     *
+     * @param int $taxonomy_id Here need taxonomy_id (Term ID)
+     * @return void
+     */
+    public static function taxonomy_markup( $taxonomy_id = false ){
+        if( ! $taxonomy_id ) return;
+        if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo "The Taxonomy ID:$taxonomy_id not found";
         $term_link = self::$term_link == 'on' ? true : false;
         ?>
         <div class="each-taxonomy-item-wrapper">
             <div class="each-item-inside">
-                <h3 class="item-heading item-heading-<?php echo esc_attr( $cat_id ); ?>">
+                <h3 class="item-heading item-heading-<?php echo esc_attr( $taxonomy_id ); ?>">
                     <?php if( $term_link ){?>
-                    <a href="<?php echo esc_url( get_term_link( $cat_id ) ); ?>" class="item-heading-link" target="_blank">
+                    <a href="<?php echo esc_url( get_term_link( $taxonomy_id ) ); ?>" class="item-heading-link" target="_blank">
                     <?php } 
-                    echo esc_html( self::get_taxonomy_name( $cat_id ) );
+                    echo esc_html( self::get_taxonomy_name( $taxonomy_id ) );
                     if( $term_link ){ ?>
                     </a>
                     <?php } ?>
                 </h3>
                 <?php
-                self::the_post_list_markup( $cat_id );
+                self::the_post_list_markup( $taxonomy_id );
                 ?>
             </div>
         </div>
@@ -130,9 +165,15 @@ class Shortcode{
 
     }
 
-    public static function get_taxonomy_name( $cat_id ) {
-        $cat_id   = (int) $cat_id;
-        $taxonomy = get_term( $cat_id, self::$term_name );
+    /**
+     * Getting Taxonomy name/title based on Taxonomy Term ID 
+     *
+     * @param int $taxonomy_id
+     * @return void
+     */
+    public static function get_taxonomy_name( $taxonomy_id ) {
+        $taxonomy_id   = (int) $taxonomy_id;
+        $taxonomy = get_term( $taxonomy_id, self::$term_name );
     
         if ( ! $taxonomy || is_wp_error( $taxonomy ) ) {
             return '';
@@ -141,7 +182,14 @@ class Shortcode{
         return $taxonomy->name;
     }
 
-    public static function the_post_list_markup( $cat_id ){
+    /**
+     * Post list HTML markup
+     * We find out All post under the selected taxonomy_id
+     *
+     * @param int $taxonomy_id
+     * @return void
+     */
+    public static function the_post_list_markup( $taxonomy_id ){
 
         $args = array(
             'post_type'             => self::$post_type,
@@ -151,7 +199,7 @@ class Shortcode{
                 array(
                     'taxonomy'  => self::$term_name,
                     'field'     => 'term_id',
-                    'terms'     => $cat_id,
+                    'terms'     => $taxonomy_id,
                 ),
             ),
 
@@ -171,7 +219,7 @@ class Shortcode{
         
         if( $query->have_posts() ):
             ?>
-            <ul class="item-list item-list-id-<?php echo esc_attr( $cat_id ); ?>">
+            <ul class="item-list item-list-id-<?php echo esc_attr( $taxonomy_id ); ?>">
             <?php 
             while( $query->have_posts() ): $query->the_post();
 
