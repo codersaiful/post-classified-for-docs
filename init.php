@@ -36,10 +36,10 @@ if ( !defined( 'WPPCD_BASE_NAME' ) ) {
 }
 
 if ( !defined( 'WPPCD_MENU_SLUG' ) ) {
-    define( 'WPPCD_MENU_SLUG', 'UltraAddons-addons' );
+    define( 'WPPCD_MENU_SLUG', 'post-classified-for-docs' );
 }
 if( !defined( 'WPPCD_PLUGIN' ) ){
-    define( 'WPPCD_PLUGIN', 'UltraAddons-addons/init.php' );
+    define( 'WPPCD_PLUGIN', 'post-classified-for-docs/init.php' );
 }
 
 
