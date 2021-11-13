@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Post Classfied for making Docs, Site map, POST List
+ * Plugin Name: Post Classfied for making Documentation, Site map, POST List
  * Plugin URI: https://github.com/codersaiful/post-classified-for-docs
  * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
  * Author: Saiful Islam

@@ -1,8 +1,8 @@
-=== Post Classfied for making Docs, Site map, POST List ===
+=== Post Classfied for making Documentation, Site map, POST List ===
 Contributors: codersaiful
 Tags: wp post, post list, product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
-Tested up to: 5.8.1
+Tested up to: 5.8.2
 Stable tag: 1.0
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -34,8 +34,9 @@ It will display all product title with link with WooCommerce caegory classified.
 `[WPPCD_Post post_type='product' term_name='product_tag']`
 It's depend on WooCommerce, product will display from product, based on WooCommerce tag(product_tag).
 
-Example with all attr:
 `[WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']`
+Example with all attr:
+
 
 **Important feature**
 
@@ -52,9 +53,9 @@ Example with all attr:
 == Installation ==
 
 
-1. Upload the plugin files to the `/wp-content/plugins/woo-product-table` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/post-classified-for-docs` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the PRODUCT TABLE -> Configure screen to configure the plugin's default setting.
+3. And Enjoy our plugin. There is no configuration/setting page. Just use shortcode.
 
 
 == Frequently Asked Questions ==
