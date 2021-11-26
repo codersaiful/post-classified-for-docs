@@ -1,0 +1,26 @@
+/**
+Only for Admin
+*/
+
+.wppcd-main-wrapper a{
+    text-decoration: none !important;
+}
+h3.item-heading a {
+    color: black;
+    font-weight: bold;
+}
+
+h3.item-heading a:hover {
+    color: #009688;
+}
+.wppcd-main-wrapper.docs-wrapper ul {
+    margin-left: 20px;
+}
+
+.wppcd-main-wrapper.docs-wrapper li,.wppcd-main-wrapper.docs-wrapper li a {
+    color: #607d8b;
+}
+
+.wppcd-main-wrapper.docs-wrapper li:hover, .wppcd-main-wrapper.docs-wrapper li a:hover {
+    color: #2196f3;
+}
