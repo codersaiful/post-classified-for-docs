@@ -85,5 +85,8 @@ use taxs attr. include ID of your Category/Taxnomy.
 
 == Changelog ==
 
+= 1.1 =
+* Bug Fix.
+
 = 1.0 =
 * Just Start First version.
