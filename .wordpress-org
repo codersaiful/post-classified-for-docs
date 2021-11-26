@@ -1,4 +1,7 @@
-onlyreadme.md
-deploy.yml
-package.json
-package-lock.json
+# Directories
+.wordpress-org
+.github
+
+# Files
+/.gitattributes
+/.gitignore
