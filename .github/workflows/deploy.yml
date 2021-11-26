@@ -1,23 +1,19 @@
 name: Deploy to WordPress.org
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+    - refs/tags/*
 jobs:
   tag:
-    name: New release
+    name: New tag
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-    - name: Build
-      run: |
-        npm install
-        npm run build
+    - uses: actions/checkout@master
     - name: WordPress Plugin Deploy
-      id: deploy
-      uses: 10up/action-wordpress-plugin-deploy@stable
+      uses: varunsridharan/action-wp-org-deploy@master
       with:
-        generate-zip: true
+        WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+        SLUG: post-classified-for-docs
       env:
-        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
