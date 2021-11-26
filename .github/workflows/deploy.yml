@@ -2,7 +2,7 @@ name: Deploy to WordPress.org
 on:
   push:
     branches:
-    - 1.1.3
+    - 1.1.4
 jobs:
   tag:
     name: New tag
