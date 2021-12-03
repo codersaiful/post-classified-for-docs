@@ -1,0 +1,23 @@
+{
+    "name": "post-classified-for-docs",
+    "version": "1.2.0",
+    "license": "GPL-2.0-or-later",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/codersaiful/post-classified-for-docs.git"
+    },
+    "main": "assets/js/scripts.js",
+    "devDependencies": {
+      "@wordpress/eslint-plugin": "^9.0.6",
+      "@wordpress/prettier-config": "^1.0.5",
+      "@wordpress/scripts": "^16.1.4",
+      "eslint": "^7.30.0",
+      "eslint-plugin-eslint-comments": "^3.2.0",
+      "eslint-plugin-import": "^2.23.4"
+    },
+    "prettier": "@wordpress/prettier-config",
+    "scripts": {
+      "start": "wp-scripts start",
+      "build": "wp-scripts build"
+    }
+  }
