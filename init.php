@@ -39,7 +39,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'WPPCD_VERSION' ) ) {
-    define( 'WPPCD_VERSION', '1.2.0.0');
+    define( 'WPPCD_VERSION', '1.2.0.1');
 }
 if( !defined( 'WPPCD_CAPABILITY' ) ){
     $wppcd_addons_capability = apply_filters( 'wppcd_addons_menu_capability', 'manage_woocommerce' );
