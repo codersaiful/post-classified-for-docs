@@ -13,5 +13,5 @@ jobs:
       uses: 10up/action-wordpress-plugin-asset-update@stable
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SVN_USERNAME: codersaiful@gmail.com
         SLUG: post-classified-for-docs
