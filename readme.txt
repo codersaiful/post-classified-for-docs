@@ -86,6 +86,9 @@ use taxs attr. include ID of your Category/Taxnomy.
 == Changelog ==
 
 = 1.1 =
+* Readme update and stable tag update
+
+= 1.1 =
 * Bug Fix and added new options
 
 = 1.0 =
