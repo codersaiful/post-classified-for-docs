@@ -155,6 +155,15 @@ class Shortcode{
                     if( $term_link ){ ?>
                     </a>
                     <?php } ?>
+
+                    <?php 
+                    
+                    if( is_user_logged_in() ){
+                    ?>
+                    <span class="wppcd-only-login-user" title="<?php echo esc_attr__( 'Taxonomy ID', 'wppcd' ) ?>"> ( <?php echo esc_html( $taxonomy_id ); ?> ) </span>
+                    <?php 
+                    } 
+                    ?>
                 </h3>
                 <?php
                 self::the_post_list_markup( $taxonomy_id );
@@ -202,8 +211,22 @@ class Shortcode{
                     'terms'     => $taxonomy_id,
                 ),
             ),
+            // 'meta_key'   => '_sku',// WPPCD_META_KEY,//'age',
+            // 'orderby'    => 'meta_value_num',
+            // 'order'      => 'ASC',
 
         );
+
+
+        //$args['meta_key'] = WPPCD_META_KEY; //'wppcd_post_order_number';
+        //$args['orderby'] = 'meta_value_num';
+        // $args['meta_query'] = array(
+        //     'relation' => 'AND',
+        //     array(
+        //         //'key' => WPPCD_META_KEY,
+        //     ),
+        // );
+
 
         /**
          * Query Args Generate and Handle using $atts
@@ -215,6 +238,9 @@ class Shortcode{
         $this_atts = self::$atts;
 
         $args = apply_filters('wppcd_query_args', $args);
+        // var_dump($args);
+    //     'meta_key' => 'start_date',
+    // 'orderby' => 'meta_value_num',
         $query = new WP_Query( $args );
         
         if( $query->have_posts() ):
@@ -228,6 +254,16 @@ class Shortcode{
                     <a href="<?php echo esc_url( get_the_permalink() ) ?>" class="doc-link" target="_blank">
                     <?php echo esc_html( get_the_title() ); ?>
                     </a>
+
+                    <?php 
+                    $order_number = get_post_meta( get_the_ID(), WPPCD_META_KEY, true );
+                    if( is_user_logged_in() && ! empty( $order_number ) ){
+                    ?>
+                    <span class="wppcd-only-login-user" title="<?php echo esc_attr__( 'Post Order Number', 'wppcd' ) ?>">( <?php echo esc_html( $order_number ); ?> )</span>
+                    <?php 
+                    } 
+                    ?>
+
                 </li>
             <?php 
             endwhile;

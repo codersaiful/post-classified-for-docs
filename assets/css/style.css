@@ -28,3 +28,6 @@ h3.item-heading a:hover {
 .wppcd-main-wrapper.docs-wrapper li:hover, .wppcd-main-wrapper.docs-wrapper li a:hover {
     color: #2196f3;
 }
+span.wppcd-only-login-user {
+    color: #7e7e7e91;
+}
