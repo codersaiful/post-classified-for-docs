@@ -26,6 +26,8 @@
  * 
  * [WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
  * 
+ * [WPPCD_Post order_by_number='off' taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
+ * 
  * *********************
  * OTHERS INFORMATION and LINKS:
  * Plugin WP URL: https://wordpress.org/plugins/post-classified-for-docs/
@@ -69,6 +71,12 @@ if ( !defined( 'WPPCD_BASE_URL' ) ) {
 if ( !defined( 'WPPCD_BASE_DIR' ) ) {
     define( "WPPCD_BASE_DIR", str_replace( '\\', '/', dirname( __FILE__ ) ) );
 }
+if ( !defined( 'WPPCD_META_KEY' ) ) {
+    define( "WPPCD_META_KEY", 'wppcd_post_order_number' );
+}
+
+
+
 
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
@@ -76,7 +84,9 @@ include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
 include_once WPPCD_BASE_DIR . '/includes/functions.php';
 
+//Classes including here
 include_once WPPCD_BASE_DIR . '/app/shortcode.php';
+include_once WPPCD_BASE_DIR . '/app/admin-handle.php';
 
 add_shortcode('WPPCD_Post',['WPPCD\Shortcode','init']);
 

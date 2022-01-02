@@ -19,6 +19,7 @@ class Shortcode{
     public static $post_type = 'post';
     public static $posts_per_page = -1;
     public static $term_link = 'on';
+    public static $order_by_number = 'on';
     public static $atts = array();
 
 
@@ -58,6 +59,7 @@ class Shortcode{
         self::$term_name = isset( self::$atts['term_name'] ) && ! empty( self::$atts['term_name'] ) ? self::$atts['term_name']: self::$term_name;
         self::$posts_per_page = isset( self::$atts['posts_per_page'] ) && ! empty( self::$atts['posts_per_page'] ) ? self::$atts['posts_per_page']: self::$posts_per_page;
         self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
+        self::$order_by_number = isset( self::$atts['order_by_number'] ) && ! empty( self::$atts['order_by_number'] ) ? self::$atts['order_by_number']: self::$order_by_number;
     }
 
     /**
@@ -155,6 +157,15 @@ class Shortcode{
                     if( $term_link ){ ?>
                     </a>
                     <?php } ?>
+
+                    <?php 
+                    
+                    if( is_user_logged_in() ){
+                    ?>
+                    <span class="wppcd-only-login-user" title="<?php echo esc_attr__( 'Taxonomy ID', 'wppcd' ) ?>"> ( <?php echo esc_html( $taxonomy_id ); ?> ) </span>
+                    <?php 
+                    } 
+                    ?>
                 </h3>
                 <?php
                 self::the_post_list_markup( $taxonomy_id );
@@ -205,6 +216,11 @@ class Shortcode{
 
         );
 
+
+        
+
+
+
         /**
          * Query Args Generate and Handle using $atts
          * 
@@ -214,8 +230,21 @@ class Shortcode{
          */
         $this_atts = self::$atts;
 
-        $args = apply_filters('wppcd_query_args', $args);
+        $args  = $temp_args = apply_filters('wppcd_query_args', $args);
+
+        if( self::$order_by_number == 'on' ){
+            $args['meta_key'] = WPPCD_META_KEY;
+            $args['orderby'] = 'meta_value_num';
+            $args['order'] = 'ASC';
+        }
+        
+
         $query = new WP_Query( $args );
+        
+        if( $query->post_count < 1 ){
+            $query = new WP_Query( $temp_args );
+        }
+
         
         if( $query->have_posts() ):
             ?>
@@ -228,6 +257,16 @@ class Shortcode{
                     <a href="<?php echo esc_url( get_the_permalink() ) ?>" class="doc-link" target="_blank">
                     <?php echo esc_html( get_the_title() ); ?>
                     </a>
+
+                    <?php 
+                    $order_number = get_post_meta( get_the_ID(), WPPCD_META_KEY, true );
+                    if( is_user_logged_in() && ! empty( $order_number ) ){
+                    ?>
+                    <span class="wppcd-only-login-user" title="<?php echo esc_attr__( 'Post Order Number', 'wppcd' ) ?>">( <?php echo esc_html( $order_number ); ?> )</span>
+                    <?php 
+                    } 
+                    ?>
+
                 </li>
             <?php 
             endwhile;
