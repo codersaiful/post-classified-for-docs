@@ -26,6 +26,8 @@
  * 
  * [WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
  * 
+ * [WPPCD_Post order_by_number='off' taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
+ * 
  * *********************
  * OTHERS INFORMATION and LINKS:
  * Plugin WP URL: https://wordpress.org/plugins/post-classified-for-docs/

@@ -19,6 +19,7 @@ class Shortcode{
     public static $post_type = 'post';
     public static $posts_per_page = -1;
     public static $term_link = 'on';
+    public static $order_by_number = 'on';
     public static $atts = array();
 
 
@@ -58,6 +59,7 @@ class Shortcode{
         self::$term_name = isset( self::$atts['term_name'] ) && ! empty( self::$atts['term_name'] ) ? self::$atts['term_name']: self::$term_name;
         self::$posts_per_page = isset( self::$atts['posts_per_page'] ) && ! empty( self::$atts['posts_per_page'] ) ? self::$atts['posts_per_page']: self::$posts_per_page;
         self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
+        self::$order_by_number = isset( self::$atts['order_by_number'] ) && ! empty( self::$atts['order_by_number'] ) ? self::$atts['order_by_number']: self::$order_by_number;
     }
 
     /**
@@ -211,21 +213,12 @@ class Shortcode{
                     'terms'     => $taxonomy_id,
                 ),
             ),
-            // 'meta_key'   => '_sku',// WPPCD_META_KEY,//'age',
-            // 'orderby'    => 'meta_value_num',
-            // 'order'      => 'ASC',
 
         );
 
 
-        //$args['meta_key'] = WPPCD_META_KEY; //'wppcd_post_order_number';
-        //$args['orderby'] = 'meta_value_num';
-        // $args['meta_query'] = array(
-        //     'relation' => 'AND',
-        //     array(
-        //         //'key' => WPPCD_META_KEY,
-        //     ),
-        // );
+        
+
 
 
         /**
@@ -237,11 +230,21 @@ class Shortcode{
          */
         $this_atts = self::$atts;
 
-        $args = apply_filters('wppcd_query_args', $args);
-        // var_dump($args);
-    //     'meta_key' => 'start_date',
-    // 'orderby' => 'meta_value_num',
+        $args  = $temp_args = apply_filters('wppcd_query_args', $args);
+
+        if( self::$order_by_number == 'on' ){
+            $args['meta_key'] = WPPCD_META_KEY;
+            $args['orderby'] = 'meta_value_num';
+            $args['order'] = 'ASC';
+        }
+        
+
         $query = new WP_Query( $args );
+        
+        if( $query->post_count < 1 ){
+            $query = new WP_Query( $temp_args );
+        }
+
         
         if( $query->have_posts() ):
             ?>
