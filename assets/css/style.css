@@ -31,3 +31,90 @@ h3.item-heading a:hover {
 span.wppcd-only-login-user {
     color: #7e7e7e91;
 }
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper {
+    background: #dddddd24;
+    padding: 0 10px;
+    border: 1px solid #dddddd75;
+    margin-bottom: 3px;
+}
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper {
+    background: #dddddd47;
+    padding: 0 10px;
+    border: 1px solid #dddddda6;
+}
+
+li.each-doc-item.active-item a {
+    font-weight: 600;
+    text-decoration: underline !important;
+}
+
+
+
+
+
+
+
+
+
+
+/***** style for sidebar start here *******/
+.sidebar section.widget .wppcd-inside-wrapper ul.item-list li a{
+    padding-left: 6px;
+}
+.sidebar section.widget .wppcd-inside-wrapper ul.item-list li a:before{
+    position: absolute;
+    left: 0;
+    content: "-";
+    top: 1px;
+}
+.widget .wppcd-inside-wrapper h3.item-heading {
+    font-size: 17px;
+    font-weight: normal;
+    color: #343333;
+}
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper h3.item-heading {
+    font-weight: bold;
+}
+.widget .wppcd-inside-wrapper {}
+
+.widget .wppcd-inside-wrapper ul.item-list {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+
+.widget .wppcd-inside-wrapper ul.item-list li>a {
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.widget .wppcd-inside-wrapper ul.item-list>li {
+    margin-bottom: 9px !important;
+}
+
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper {}
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper ul.item-list {
+    display: none;
+}
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper ul.item-list {
+    display: block;
+}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='collapsed'] h3.item-heading {
+    background: #ffffff08;
+}
+
+.wppcd-.each-taxonomy-item-wrapper.taxonomy-item-wrapper-369.collapse-able {}
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='collapsed'] h3.item-heading:after {content: "+";}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='opened'] h3.item-heading:after {content: "-";}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper h3.item-heading:after{
+    float: right;
+}
+.widget .wppcd-inside-wrapper h3.item-heading{
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+/***** style for sidebar end here *******/

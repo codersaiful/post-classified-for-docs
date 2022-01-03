@@ -18,7 +18,7 @@ if( !function_exists( 'wppcd_enqueue_scripts' ) ){
          * 
          * @since 1.0
          */
-        wp_enqueue_script( 'wppcd-script', WPPCD_BASE_URL . 'assets/js/scripts.js', array( 'jquery','wpt-custom-js' ), '1.0.0', true );
+        wp_enqueue_script( 'wppcd-script', WPPCD_BASE_URL . 'assets/js/scripts.js', array( 'jquery' ), '1.0.0', true );
 
         $ajax_url = admin_url( 'admin-ajax.php' );
         $WPPCD_DATA = array( 
