@@ -31,14 +31,20 @@ h3.item-heading a:hover {
 span.wppcd-only-login-user {
     color: #7e7e7e91;
 }
-.wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper {
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper {
+    background: #dddddd24;
+    padding: 0 10px;
+    border: 1px solid #dddddd75;
+    margin-bottom: 3px;
+}
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper {
     background: #dddddd47;
     padding: 0 10px;
     border: 1px solid #dddddda6;
 }
 
 li.each-doc-item.active-item a {
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: underline !important;
 }
 
@@ -52,10 +58,23 @@ li.each-doc-item.active-item a {
 
 
 /***** style for sidebar start here *******/
+.sidebar section.widget .wppcd-inside-wrapper ul.item-list li a{
+    padding-left: 6px;
+}
+.sidebar section.widget .wppcd-inside-wrapper ul.item-list li a:before{
+    position: absolute;
+    left: 0;
+    content: "-";
+    top: 1px;
+}
 .widget .wppcd-inside-wrapper h3.item-heading {
     font-size: 17px;
+    font-weight: normal;
+    color: #343333;
 }
-
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper h3.item-heading {
+    font-weight: bold;
+}
 .widget .wppcd-inside-wrapper {}
 
 .widget .wppcd-inside-wrapper ul.item-list {
