@@ -31,7 +31,16 @@ h3.item-heading a:hover {
 span.wppcd-only-login-user {
     color: #7e7e7e91;
 }
+.wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper {
+    background: #dddddd47;
+    padding: 0 10px;
+    border: 1px solid #dddddda6;
+}
 
+li.each-doc-item.active-item a {
+    font-weight: bold;
+    text-decoration: underline !important;
+}
 
 
 
@@ -64,4 +73,29 @@ span.wppcd-only-login-user {
     margin-bottom: 9px !important;
 }
 
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper {}
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper ul.item-list {
+    display: none;
+}
+.widget .wppcd-inside-wrapper .wppcd-active-taxonomy-wrapper.each-taxonomy-item-wrapper ul.item-list {
+    display: block;
+}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='collapsed'] h3.item-heading {
+    background: #ffffff08;
+}
+
+.wppcd-.each-taxonomy-item-wrapper.taxonomy-item-wrapper-369.collapse-able {}
+
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='collapsed'] h3.item-heading:after {content: "+";}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='opened'] h3.item-heading:after {content: "-";}
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper h3.item-heading:after{
+    float: right;
+}
+.widget .wppcd-inside-wrapper h3.item-heading{
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
 /***** style for sidebar end here *******/

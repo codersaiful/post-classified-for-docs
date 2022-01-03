@@ -19,6 +19,7 @@ class Shortcode{
     public static $post_type = 'post';
     public static $posts_per_page = -1;
     public static $term_link = 'on';
+    public static $_blank = 'on';
     public static $order_by_number = 'on';
     public static $atts = array();
 
@@ -59,6 +60,7 @@ class Shortcode{
         self::$term_name = isset( self::$atts['term_name'] ) && ! empty( self::$atts['term_name'] ) ? self::$atts['term_name']: self::$term_name;
         self::$posts_per_page = isset( self::$atts['posts_per_page'] ) && ! empty( self::$atts['posts_per_page'] ) ? self::$atts['posts_per_page']: self::$posts_per_page;
         self::$term_link = isset( self::$atts['term_link'] ) && ! empty( self::$atts['term_link'] ) ? self::$atts['term_link']: self::$term_link;
+        self::$_blank = isset( self::$atts['_blank'] ) && ! empty( self::$atts['_blank'] ) ? self::$atts['_blank']: self::$_blank;
         self::$order_by_number = isset( self::$atts['order_by_number'] ) && ! empty( self::$atts['order_by_number'] ) ? self::$atts['order_by_number']: self::$order_by_number;
     }
 
@@ -144,10 +146,24 @@ class Shortcode{
      */
     public static function taxonomy_markup( $taxonomy_id = false ){
         if( ! $taxonomy_id ) return;
+
+
+        $current_terms = get_the_terms(get_the_ID(),self::$term_name);
+        if( is_array( $current_terms ) ){
+            $current_terms = array_map(function($ddd){
+                return $ddd->term_id;
+            },$current_terms);
+        }else{
+            $current_terms = array();
+        }
+        
+
+        $active_class = in_array( $taxonomy_id, $current_terms ) ? 'active-taxonomy-wrapper' : '';
+
         if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo esc_html__( sprintf( "The Taxonomy ID:%s not found", $taxonomy_id ), 'wppcd');;
         $term_link = self::$term_link == 'on' ? true : false;
         ?>
-        <div class="each-taxonomy-item-wrapper">
+        <div class="wppcd-<?php echo esc_attr( $active_class ); ?> each-taxonomy-item-wrapper taxonomy-item-wrapper-<?php echo esc_attr( $taxonomy_id ); ?>">
             <div class="each-item-inside">
                 <h3 class="item-heading item-heading-<?php echo esc_attr( $taxonomy_id ); ?>">
                     <?php if( $term_link ){?>
@@ -202,6 +218,8 @@ class Shortcode{
      */
     public static function the_post_list_markup( $taxonomy_id ){
 
+        $current_id = get_queried_object_id();
+
         $args = array(
             'post_type'             => self::$post_type,
             'post_status'           => 'publish',
@@ -238,7 +256,7 @@ class Shortcode{
             $args['order'] = 'ASC';
         }
         
-
+        
         $query = new WP_Query( $args );
         
         if( $query->post_count < 1 ){
@@ -252,9 +270,11 @@ class Shortcode{
             <?php 
             while( $query->have_posts() ): $query->the_post();
 
+            $active_item = $current_id == get_the_ID() ? 'active-item' : '';
+            $_blank = self::$_blank == 'on' ? '_blank' : '';
             ?>
-                <li class="each-doc-item">
-                    <a href="<?php echo esc_url( get_the_permalink() ) ?>" class="doc-link" target="_blank">
+                <li class="each-doc-item <?php echo esc_attr( $active_item ); ?>">
+                    <a href="<?php echo esc_url( get_the_permalink() ) ?>" class="doc-link" target="<?php echo esc_attr( $_blank ); ?>">
                     <?php echo esc_html( get_the_title() ); ?>
                     </a>
 
