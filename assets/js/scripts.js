@@ -9,6 +9,12 @@ jQuery(function ($) {
             $(this).addClass('collapse-able');
             $(this).attr('data-status','collapsed');
         });
+        
+        $('.widget .each-taxonomy-item-wrapper').each(function(){
+            let post_count = $(this).find('ul.item-list').data('post_count');
+            $(this).find('h3.item-heading').append('<span class="wppcd-only-login-user" title="Taxonomy ID"> ( ' + post_count + ' ) </span>');
+        });
+
         $(document.body).on('click','.widget .each-taxonomy-item-wrapper.collapse-able h3.item-heading',function(){
             let wrapper = $(this).closest('.collapse-able');
             let items = wrapper.find('ul.item-list');

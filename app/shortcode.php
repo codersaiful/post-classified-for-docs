@@ -266,7 +266,7 @@ class Shortcode{
         
         if( $query->have_posts() ):
             ?>
-            <ul class="item-list item-list-id-<?php echo esc_attr( $taxonomy_id ); ?>">
+            <ul class="item-list item-list-id-<?php echo esc_attr( $taxonomy_id ); ?>" data-post_count="<?php echo esc_attr( $query->post_count ); ?>">
             <?php 
             while( $query->have_posts() ): $query->the_post();
 
