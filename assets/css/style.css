@@ -22,7 +22,7 @@ h3.item-heading a:hover {
 }
 
 .wppcd-wrapper.docs-wrapper li,.wppcd-wrapper.docs-wrapper li a {
-    color: #607d8b;
+    color: #898989;
 }
 
 .wppcd-wrapper.docs-wrapper li:hover, .wppcd-wrapper.docs-wrapper li a:hover {
@@ -50,6 +50,30 @@ li.each-doc-item.active-item a {
 
 
 /****** New Code ******/
+.wppcd h3.item-heading,.wppcd h3.item-heading a {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.wppcd .each-item-inside {}
+
+.wppcd li.each-doc-item {}
+
+.wppcd li.each-doc-item a:hover {
+    color: #1e799d;
+}
+
+.wppcd ul.item-list {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+.wppcd li.each-doc-item:before {content: "-";}
+
+.wppcd .each-taxonomy-item-wrapper {
+    padding-bottom: 20px;
+}
 
 /****** New Code END ******/
 
