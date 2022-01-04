@@ -49,6 +49,28 @@ li.each-doc-item.active-item a {
 }
 
 
+/****** New Code ******/
+.wppcd-main-wrapper h3.item-heading {
+    font-size: 20px;
+}
+.wppcd-main-wrapper h3.item-heading, .wppcd-main-wrapper h3.item-heading a {
+    color: #000000;
+    font-weight: 500;
+}
+.wppcd-main-wrapper  ul.item-list {
+    padding: 0;
+    font-size: 16px;
+}
+.wppcd-main-wrapper  ul.item-list li{
+
+}
+.wppcd-main-wrapper  ul.item-list li a {
+    color: #9c9fa3;
+}
+.wppcd-main-wrapper ul.item-list li a:hover {
+    color: black;
+}
+/****** New Code END ******/
 
 
 
