@@ -120,10 +120,12 @@ class Shortcode{
      */
     public static function generate_html(){
         ob_start();
-
+        ?>
+        <div class="wppcd-main-wrapper wppcd">
+        <?php
         foreach( self::$taxs as $taxonomy_id ){
             ?>
-            <div class="wppcd-main-wrapper docs-wrapper">
+            <div class="wppcd-wrapper docs-wrapper docs-wrapper-tax-<?php echo esc_attr( $taxonomy_id ); ?>">
                 <div class="wppcd-inside-wrapper">
                 <?php
                 self::taxonomy_markup( $taxonomy_id );
@@ -134,7 +136,9 @@ class Shortcode{
             
             <?php
         }
-
+        ?>
+        </div> <!-- /.wppcd-main-wrapper -->
+        <?php
         return ob_get_clean();
     }
 

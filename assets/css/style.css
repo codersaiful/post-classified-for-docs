@@ -1,7 +1,7 @@
 /**
 Only for FrontEnd
 */
-.wppcd-main-wrapper a{
+.wppcd-wrapper a{
     text-decoration: none !important;
 }
 h3.item-heading a {
@@ -13,19 +13,19 @@ h3.item-heading a:hover {
     color: #009688;
 }
 
-.wppcd-main-wrapper.docs-wrapper {}
+.wppcd-wrapper.docs-wrapper {}
 
-.wppcd-main-wrapper.docs-wrapper li {}
+.wppcd-wrapper.docs-wrapper li {}
 
-.wppcd-main-wrapper.docs-wrapper ul {
+.wppcd-wrapper.docs-wrapper ul {
     margin-left: 20px;
 }
 
-.wppcd-main-wrapper.docs-wrapper li,.wppcd-main-wrapper.docs-wrapper li a {
+.wppcd-wrapper.docs-wrapper li,.wppcd-wrapper.docs-wrapper li a {
     color: #607d8b;
 }
 
-.wppcd-main-wrapper.docs-wrapper li:hover, .wppcd-main-wrapper.docs-wrapper li a:hover {
+.wppcd-wrapper.docs-wrapper li:hover, .wppcd-wrapper.docs-wrapper li a:hover {
     color: #2196f3;
 }
 span.wppcd-only-login-user {
@@ -50,29 +50,31 @@ li.each-doc-item.active-item a {
 
 
 /****** New Code ******/
-.wppcd-main-wrapper h3.item-heading {
+.wppcd-wrapper h3.item-heading {
     font-size: 20px;
 }
-.wppcd-main-wrapper h3.item-heading, .wppcd-main-wrapper h3.item-heading a {
+.wppcd-wrapper h3.item-heading, .wppcd-wrapper h3.item-heading a {
     color: #000000;
     font-weight: 500;
 }
-.wppcd-main-wrapper  ul.item-list {
+.wppcd-wrapper  ul.item-list {
     padding: 0;
     font-size: 16px;
 }
-.wppcd-main-wrapper  ul.item-list li{
+.wppcd-wrapper  ul.item-list li{
 
 }
-.wppcd-main-wrapper  ul.item-list li a {
+.wppcd-wrapper  ul.item-list li a {
     color: #9c9fa3;
 }
-.wppcd-main-wrapper ul.item-list li a:hover {
+.wppcd-wrapper ul.item-list li a:hover {
     color: black;
 }
 /****** New Code END ******/
 
+@media only screen and (min-width: 992px){
 
+}
 
 
 
