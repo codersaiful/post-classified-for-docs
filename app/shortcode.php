@@ -121,7 +121,7 @@ class Shortcode{
     public static function generate_html(){
         ob_start();
         ?>
-        <div class="wppcd-main-wrapper ">
+        <div class="wppcd-main-wrapper wppcd">
         <?php
         foreach( self::$taxs as $taxonomy_id ){
             ?>
