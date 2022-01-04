@@ -96,12 +96,7 @@ li.each-doc-item.active-item a {
 .sidebar section.widget .wppcd-inside-wrapper ul.item-list li a{
     padding-left: 6px;
 }
-.sidebar section.widget .wppcd-inside-wrapper ul.item-list li a:before{
-    position: absolute;
-    left: 0;
-    content: "-";
-    top: 1px;
-}
+
 .widget .wppcd-inside-wrapper h3.item-heading {
     font-size: 17px;
     font-weight: normal;
