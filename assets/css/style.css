@@ -50,30 +50,14 @@ li.each-doc-item.active-item a {
 
 
 /****** New Code ******/
-.wppcd-wrapper h3.item-heading {
-    font-size: 20px;
-}
-.wppcd-wrapper h3.item-heading, .wppcd-wrapper h3.item-heading a {
-    color: #000000;
-    font-weight: 500;
-}
-.wppcd-wrapper  ul.item-list {
-    padding: 0;
-    font-size: 16px;
-}
-.wppcd-wrapper  ul.item-list li{
 
-}
-.wppcd-wrapper  ul.item-list li a {
-    color: #9c9fa3;
-}
-.wppcd-wrapper ul.item-list li a:hover {
-    color: black;
-}
 /****** New Code END ******/
 
 @media only screen and (min-width: 992px){
-
+    .wppcd-main-wrapper.wppcd {
+        margin-top: 25px;
+        padding: 15px;
+    }
 }
 
 
