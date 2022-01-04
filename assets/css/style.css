@@ -60,7 +60,8 @@ li.each-doc-item.active-item a {
 .wppcd li.each-doc-item {}
 
 .wppcd li.each-doc-item a:hover {
-    color: #1e799d;
+    color: #0d2f4a;
+    font-weight: 500;
 }
 
 .wppcd ul.item-list {
