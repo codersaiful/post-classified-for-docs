@@ -58,6 +58,9 @@ li.each-doc-item.active-item a {
 
 
 /***** style for sidebar start here *******/
+.widget .wppcd-inside-wrapper .each-taxonomy-item-wrapper[data-status='opened'] {
+    border-top: 2px solid #1e3c4a82;
+}
 .sidebar section.widget .wppcd-inside-wrapper ul.item-list li a{
     padding-left: 6px;
 }
