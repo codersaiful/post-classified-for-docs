@@ -20,7 +20,7 @@ class Admin_Handle{
     }
 
     public static function register_meta_boxes(){
-        add_meta_box( 'wppcd-post-order-number', __( "Post Order Number", 'wppcd' ), [__CLASS__, 'display_metabox'], self::$post_types );
+        add_meta_box( 'wppcd-post-order-number', __( "Post Order Number(Making Doc plugin)", 'wppcd' ), [__CLASS__, 'display_metabox'], self::$post_types );
     }
 
     public static function display_metabox( $post ){
@@ -28,7 +28,7 @@ class Admin_Handle{
         
         $post_id = $post->ID;
         $order_number = get_post_meta( $post_id, self::$meta_key, true );
-
+        $order_number = ! empty( $order_number ) && is_numeric( $order_number ) ? $order_number : 10;
         ?>
         <input name="wppcd-order-number" value="<?php echo esc_attr( $order_number ); ?>" type="number" placeholder="input number">
         <?php
