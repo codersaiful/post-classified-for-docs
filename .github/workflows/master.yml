@@ -11,11 +11,21 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
     
-    - name: 📂 Sync files to ultraaddons main site
+    - name: 📂 Sync files for wooproducttable.com/documentation
       uses: SamKirkland/FTP-Deploy-Action@4.2.0
       with:
         server: ${{ secrets.ftp_server }}
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: ${{ secrets.ftp_file_dir }}
+    
+    - name: 📂 Sync files for codeastrology.com/min-max-quantity/documentation
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ${{ secrets.FTP_SERVER_2 }}
+        username: ${{ secrets.FTP_USERNAME_2 }}
+        password: ${{ secrets.FTP_PASSWORD_2 }}
+        server-dir: ${{ secrets.FTP_FILE_DIR_2 }}
+    
+
     
