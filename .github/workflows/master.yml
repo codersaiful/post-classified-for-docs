@@ -27,5 +27,13 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD_2 }}
         server-dir: ${{ secrets.FTP_FILE_DIR_2 }}
     
+    - name: 📂 Sync files for ultraaddons.com/documentation
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: ${{ secrets.FTP_SERVER_UA }}
+        username: ${{ secrets.FTP_USERNAME_UA }}
+        password: ${{ secrets.FTP_PASSWORD_UA }}
+        server-dir: ${{ secrets.FTP_FILE_DIR_UA }}
+    
 
     
