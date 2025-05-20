@@ -1,6 +1,6 @@
 === Post Classfied for making Documentation, Site map, POST List ===
 Contributors: codersaiful
-Tags: wp post, post list, product list, taxonomy wise post, category wise post, site map, site xml
+Tags: product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
 Tested up to: 5.8.2
 Stable tag: 1.2.0
@@ -8,7 +8,7 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
+To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post.
 
 == Description ==
 *WP Post Classfied for making Docs, Site map, POST List* helps you to display post list based on category, tag, or any type or taxonomy. All condition is depend on shortcode attr. See some example of shortcode.
