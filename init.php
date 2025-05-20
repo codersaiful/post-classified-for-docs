@@ -9,9 +9,9 @@
  * 
  * Version: 1.2.0
  * Requires at least:    4.0.0
- * Tested up to:         5.8.2
+ * Tested up to:         6.8
  * WC requires at least: 4.0
- * WC tested up to:      5.6.2
+ * WC tested up to:      9.8.5
  * 
  * *********************
  * SHORTCODE EXAMPLE: 
