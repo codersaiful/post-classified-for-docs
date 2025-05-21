@@ -1,14 +1,14 @@
 === Post Classfied for making Documentation, Site map, POST List ===
 Contributors: codersaiful
-Tags: wp post, post list, product list, taxonomy wise post, category wise post, site map, site xml
+Tags: product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
-Tested up to: 5.8.2
+Tested up to: 6.8
 Stable tag: 1.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
+To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post.
 
 == Description ==
 *WP Post Classfied for making Docs, Site map, POST List* helps you to display post list based on category, tag, or any type or taxonomy. All condition is depend on shortcode attr. See some example of shortcode.
@@ -49,6 +49,15 @@ Example with all attr:
 * taxs supported attr. define your category ID, or any type term/taxonomy ID.
 * term_name supported attr. such: post,tag,product_cat,product_tag etc.
 * term_link supported attr. on or off your taxonomy link.
+
+## Privacy Policy 
+Post Classfied for making Documentation, Site map, POST List uses [Appsero](https://appsero.com) SDK to collect some telemetry data upon user's confirmation. This helps us to troubleshoot problems faster & make product improvements.
+
+Appsero SDK **does not gather any data by default.** The SDK only starts gathering basic telemetry data **when a user allows it via the admin notice**. We collect the data to ensure a great user experience for all our users. 
+
+Integrating Appsero SDK **DOES NOT IMMEDIATELY** start gathering data, **without confirmation from users in any case.**
+
+Learn more about how [Appsero collects and uses this data](https://appsero.com/privacy-policy/).
 
 == Installation ==
 
