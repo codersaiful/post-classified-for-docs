@@ -71,3 +71,29 @@ class Admin_Handle{
 
 }
 Admin_Handle::init();
+
+$file = __DIR__ . '/appsero/src/Client.php';
+
+if ( ! class_exists( 'Appsero\Client' ) && file_exists( $file ) ) {
+
+    require_once $file;
+    /**
+     * Initialize the plugin tracker
+     *
+     * @return void
+     */
+    function appsero_init_tracker_post_classified_for_docs() {
+
+
+        $client = new \Appsero\Client( '6b40f082-3c45-4f46-b21b-a7f4f1038dc7', 'Post Classfied POST List', WPPCD_MAIN_FILE );
+        // dd($client);
+        // Active insights
+        $client->insights()->init();
+
+    }
+
+    appsero_init_tracker_post_classified_for_docs();
+}
+
+
+
