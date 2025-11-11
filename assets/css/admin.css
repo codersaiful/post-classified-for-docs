@@ -1,0 +1,280 @@
+/**
+ * Admin Styles for BizzDocMaker
+ *
+ * @package BizzDocMaker
+ * @since 2.0.0
+ */
+
+/* Settings Page */
+.bizzdocmaker-settings {
+	background: #f0f0f1;
+}
+
+.bizzdocmaker-settings h1 {
+	padding: 20px 0;
+}
+
+.bizzdocmaker-settings-wrapper {
+	display: flex;
+	gap: 30px;
+	margin-top: 20px;
+}
+
+.bizzdocmaker-settings-tabs {
+	flex: 1;
+	background: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bizzdocmaker-sidebar {
+	width: 300px;
+}
+
+.bizzdocmaker-widget {
+	background: white;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+}
+
+.bizzdocmaker-widget h3 {
+	margin-top: 0;
+	color: #1d2327;
+	font-size: 16px;
+	border-bottom: 2px solid #2271b1;
+	padding-bottom: 10px;
+}
+
+.bizzdocmaker-widget ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bizzdocmaker-widget ul li {
+	padding: 8px 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.bizzdocmaker-widget ul li:last-child {
+	border-bottom: none;
+}
+
+.bizzdocmaker-widget code {
+	display: block;
+	background: #f0f0f1;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 4px;
+	font-size: 13px;
+}
+
+/* Tab Navigation */
+.nav-tab-wrapper {
+	border-bottom: 1px solid #c3c4c7;
+	margin: 0 0 20px;
+}
+
+.nav-tab {
+	cursor: pointer;
+	border: 1px solid transparent;
+	background: transparent;
+}
+
+.nav-tab-active {
+	background: #f0f0f1;
+	border-color: #c3c4c7;
+	border-bottom-color: transparent;
+}
+
+/* Form Styles */
+.bizzdocmaker-settings form {
+	margin-top: 20px;
+}
+
+.bizzdocmaker-settings .form-table th {
+	width: 200px;
+	padding: 20px 10px 20px 0;
+}
+
+.bizzdocmaker-settings .form-table td {
+	padding: 20px 10px;
+}
+
+.bizzdocmaker-settings input[type="number"],
+.bizzdocmaker-settings select {
+	min-width: 200px;
+}
+
+.bizzdocmaker-settings .description {
+	margin-top: 8px;
+	color: #646970;
+	font-size: 13px;
+}
+
+/* Help Page */
+.bizzdocmaker-help {
+	max-width: 1200px;
+}
+
+.bizzdocmaker-help-content {
+	background: white;
+	padding: 30px;
+	margin-top: 20px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bizzdocmaker-help-section {
+	margin-bottom: 40px;
+}
+
+.bizzdocmaker-help-section h2 {
+	color: #2271b1;
+	border-bottom: 2px solid #2271b1;
+	padding-bottom: 10px;
+}
+
+.bizzdocmaker-help-section h3 {
+	color: #1d2327;
+	margin-top: 25px;
+}
+
+.bizzdocmaker-help-section pre {
+	background: #f0f0f1;
+	padding: 15px;
+	border-radius: 4px;
+	border-left: 4px solid #2271b1;
+	overflow-x: auto;
+}
+
+.bizzdocmaker-help-section code {
+	background: #f0f0f1;
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-size: 13px;
+}
+
+.bizzdocmaker-help-section ul li {
+	margin-bottom: 8px;
+}
+
+/* Dashboard Widget */
+.bizzdocmaker-dashboard-widget {
+	padding: 10px 0;
+}
+
+/* Meta Box */
+.bizzdocmaker-meta-box {
+	margin: 0;
+}
+
+.bizzdocmaker-meta-box label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.bizzdocmaker-meta-box input[type="number"] {
+	width: 100%;
+	padding: 6px 10px;
+}
+
+.bizzdocmaker-meta-box .description {
+	margin-top: 8px;
+	color: #646970;
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+/* Welcome Screen */
+.bizzdocmaker-welcome {
+	position: relative;
+	background: white;
+	padding: 40px;
+	margin: 20px 20px 20px 0;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bizzdocmaker-welcome h1 {
+	font-size: 32px;
+	margin-bottom: 10px;
+}
+
+.about-text {
+	font-size: 16px;
+	color: #646970;
+	margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.bizzdocmaker-settings-wrapper {
+		flex-direction: column;
+	}
+	
+	.bizzdocmaker-sidebar {
+		width: 100%;
+	}
+	
+	.bizzdocmaker-welcome {
+		padding: 20px;
+	}
+	
+	.bizzdocmaker-welcome h1 {
+		font-size: 24px;
+	}
+}
+
+/* Buttons */
+.bizzdocmaker-button {
+	background: #2271b1;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	text-decoration: none;
+	display: inline-block;
+	transition: background 0.2s ease;
+}
+
+.bizzdocmaker-button:hover {
+	background: #135e96;
+	color: white;
+}
+
+.bizzdocmaker-button-secondary {
+	background: #f0f0f1;
+	color: #1d2327;
+}
+
+.bizzdocmaker-button-secondary:hover {
+	background: #dcdcde;
+	color: #1d2327;
+}
+
+/* Notices */
+.bizzdocmaker-notice {
+	padding: 12px 15px;
+	margin: 15px 0;
+	border-left: 4px solid #2271b1;
+	background: white;
+	border-radius: 0 4px 4px 0;
+}
+
+.bizzdocmaker-notice.notice-success {
+	border-left-color: #00a32a;
+}
+
+.bizzdocmaker-notice.notice-error {
+	border-left-color: #d63638;
+}
+
+.bizzdocmaker-notice.notice-warning {
+	border-left-color: #dba617;
+}

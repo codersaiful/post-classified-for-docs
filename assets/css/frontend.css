@@ -1,0 +1,291 @@
+/**
+ * Frontend Styles for BizzDocMaker
+ *
+ * @package BizzDocMaker
+ * @since 2.0.0
+ */
+
+/* Main Wrapper */
+.bizzdocmaker-wrapper {
+	margin: 20px 0;
+	clear: both;
+}
+
+.bizzdocmaker-wrapper a {
+	text-decoration: none !important;
+}
+
+/* Section Styles */
+.bizzdocmaker-section {
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.bizzdocmaker-section:last-child {
+	border-bottom: none;
+}
+
+.bizzdocmaker-section-inner {
+	padding: 0;
+}
+
+/* Heading Styles */
+.bizzdocmaker-heading {
+	font-size: 22px;
+	font-weight: 600;
+	margin: 0 0 15px;
+	color: #333;
+	line-height: 1.4;
+}
+
+.bizzdocmaker-heading-link {
+	color: #2271b1;
+	transition: color 0.2s ease;
+}
+
+.bizzdocmaker-heading-link:hover {
+	color: #135e96;
+}
+
+.bizzdocmaker-count {
+	font-size: 14px;
+	color: #757575;
+	font-weight: normal;
+	margin-left: 5px;
+}
+
+/* Description */
+.bizzdocmaker-description {
+	margin-bottom: 15px;
+	color: #666;
+	font-size: 14px;
+	line-height: 1.6;
+}
+
+/* List Styles */
+.bizzdocmaker-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.bizzdocmaker-item {
+	margin: 0 0 8px;
+	padding: 0;
+	position: relative;
+}
+
+.bizzdocmaker-item:before {
+	content: "→";
+	color: #2271b1;
+	margin-right: 8px;
+	font-weight: bold;
+}
+
+.bizzdocmaker-link {
+	color: #2271b1;
+	transition: all 0.2s ease;
+	font-size: 15px;
+}
+
+.bizzdocmaker-link:hover {
+	color: #135e96;
+	font-weight: 500;
+}
+
+.bizzdocmaker-item.active .bizzdocmaker-link {
+	font-weight: 600;
+	color: #135e96;
+}
+
+/* Grid Template */
+.bizzdocmaker-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--grid-columns, 3), 1fr);
+	gap: 25px;
+}
+
+@media (max-width: 1200px) {
+	.bizzdocmaker-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.bizzdocmaker-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.bizzdocmaker-grid .bizzdocmaker-section {
+	background: #f9f9f9;
+	padding: 20px;
+	border-radius: 8px;
+	border: 1px solid #e0e0e0;
+	border-bottom: 1px solid #e0e0e0;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bizzdocmaker-grid .bizzdocmaker-section:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion Template */
+.bizzdocmaker-accordion .bizzdocmaker-section {
+	border: 1px solid #e0e0e0;
+	border-radius: 6px;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-heading {
+	margin: 0;
+	padding: 15px 20px;
+	background: #f5f5f5;
+	cursor: pointer;
+	position: relative;
+	user-select: none;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-heading:hover {
+	background: #ebebeb;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-heading:after {
+	content: "▼";
+	position: absolute;
+	right: 20px;
+	transition: transform 0.3s ease;
+	font-size: 12px;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-section.collapsed .bizzdocmaker-heading:after {
+	transform: rotate(-90deg);
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-section-inner {
+	padding: 0 20px;
+	max-height: 1000px;
+	overflow: hidden;
+	transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-section.collapsed .bizzdocmaker-section-inner {
+	max-height: 0;
+	padding: 0 20px;
+}
+
+.bizzdocmaker-accordion .bizzdocmaker-list {
+	padding: 15px 0;
+}
+
+/* Table Template */
+.bizzdocmaker-table {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.bizzdocmaker-table table {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+}
+
+.bizzdocmaker-table th,
+.bizzdocmaker-table td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.bizzdocmaker-table th {
+	background: #f5f5f5;
+	font-weight: 600;
+	color: #333;
+}
+
+.bizzdocmaker-table tr:hover {
+	background: #f9f9f9;
+}
+
+.bizzdocmaker-table .bizzdocmaker-link {
+	display: inline-block;
+	padding: 5px 0;
+}
+
+/* Widget Styles */
+.widget .bizzdocmaker-wrapper {
+	margin: 0;
+}
+
+.widget .bizzdocmaker-section {
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+
+.widget .bizzdocmaker-heading {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.widget .bizzdocmaker-item {
+	margin-bottom: 6px;
+}
+
+.widget .bizzdocmaker-link {
+	font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.bizzdocmaker-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.bizzdocmaker-heading {
+		font-size: 18px;
+	}
+	
+	.bizzdocmaker-table {
+		font-size: 14px;
+	}
+	
+	.bizzdocmaker-table th,
+	.bizzdocmaker-table td {
+		padding: 10px;
+	}
+}
+
+/* Loading State */
+.bizzdocmaker-loading {
+	text-align: center;
+	padding: 40px 20px;
+	color: #757575;
+}
+
+.bizzdocmaker-loading:after {
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	margin-left: 10px;
+	border: 3px solid #f3f3f3;
+	border-top: 3px solid #2271b1;
+	border-radius: 50%;
+	animation: bizzdocmaker-spin 1s linear infinite;
+}
+
+@keyframes bizzdocmaker-spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.bizzdocmaker-empty {
+	text-align: center;
+	padding: 40px 20px;
+	color: #757575;
+	font-style: italic;
+}
