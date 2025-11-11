@@ -40,6 +40,48 @@ function bizzdocmaker_init() {
 	return BizzDocMaker\Plugin::instance();
 }
 
+/**
+ * Activation hook
+ *
+ * @return void
+ */
+function bizzdocmaker_activate() {
+	// Set activation redirect transient.
+	set_transient( 'bizzdocmaker_activation_redirect', true, 30 );
+	
+	// Set default options if not exists.
+	if ( false === get_option( 'bizzdocmaker_options' ) ) {
+		$defaults = array(
+			'default_template'  => 'list',
+			'enable_caching'    => false,
+			'posts_per_page'    => -1,
+			'show_count'        => false,
+		);
+		add_option( 'bizzdocmaker_options', $defaults );
+	}
+	
+	// Store version.
+	update_option( 'bizzdocmaker_version', '2.0.0' );
+	
+	// Flush rewrite rules.
+	flush_rewrite_rules();
+}
+register_activation_hook( BIZZDOCMAKER_MAIN_FILE, 'bizzdocmaker_activate' );
+
+/**
+ * Deactivation hook
+ *
+ * @return void
+ */
+function bizzdocmaker_deactivate() {
+	// Clear transients.
+	delete_transient( 'bizzdocmaker_activation_redirect' );
+	
+	// Flush rewrite rules.
+	flush_rewrite_rules();
+}
+register_deactivation_hook( BIZZDOCMAKER_MAIN_FILE, 'bizzdocmaker_deactivate' );
+
 // Start the plugin.
 bizzdocmaker_init();
 
