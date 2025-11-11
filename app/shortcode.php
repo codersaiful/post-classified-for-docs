@@ -164,7 +164,7 @@ class Shortcode{
 
         $active_class = in_array( $taxonomy_id, $current_terms ) ? 'active-taxonomy-wrapper' : '';
 
-        if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo esc_html__( sprintf( "The Taxonomy ID:%s not found", $taxonomy_id ), 'wppcd');;
+        if(empty( self::get_taxonomy_name( $taxonomy_id ) )) echo esc_html( sprintf( __('The Taxonomy ID:%s not found', 'wppcd' ), $taxonomy_id ) );
         $term_link = self::$term_link == 'on' ? true : false;
         ?>
         <div class="wppcd-<?php echo esc_attr( $active_class ); ?> each-taxonomy-item-wrapper taxonomy-item-wrapper-<?php echo esc_attr( $taxonomy_id ); ?>">
