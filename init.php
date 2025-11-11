@@ -10,8 +10,6 @@
  * Version: 1.2.0
  * Requires at least:    4.0.0
  * Tested up to:         6.8
- * WC requires at least: 4.0
- * WC tested up to:      9.8.5
  * 
  * *********************
  * SHORTCODE EXAMPLE: 
@@ -52,6 +50,9 @@ if( !defined( 'WPPCD_CAPABILITY' ) ){
 
 if ( !defined( 'WPPCD_NAME' ) ) {
     define( 'WPPCD_NAME', 'UltraAddons - Addons Plugin');
+}
+if ( !defined( 'WPPCD_MAIN_FILE' ) ) {
+    define( 'WPPCD_MAIN_FILE', __FILE__ );
 }
 
 if ( !defined( 'WPPCD_BASE_NAME' ) ) {
