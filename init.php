@@ -1,96 +1,76 @@
 <?php
-
 /**
- * Plugin Name: Post Classfied for making Documentation, Site map, POST List
+ * Plugin Name: BizzDocMaker - Documentation & Post List Builder
  * Plugin URI: https://github.com/codersaiful/post-classified-for-docs
- * Description: To display all post based on a shortcode [WPPCD_Post taxs='123,322']. User able to display any type custom post. Even any type taxonomy. Such: category,tags etc.
+ * Description: A powerful WordPress plugin to create beautiful documentation pages, sitemaps, and organized post lists with multiple display templates, advanced filtering, and customization options.
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
- * 
- * Version: 1.2.0
- * Requires at least:    4.0.0
- * Tested up to:         6.8
- * 
- * *********************
- * SHORTCODE EXAMPLE: 
- * 
- * [WPPCD_Post taxs='123,322']
- * 
- * [WPPCD_Post]
- * 
- * [WPPCD_Post post_type='product']
- * 
- * [WPPCD_Post post_type='product' term_name='product_tag']
- * 
- * [WPPCD_Post taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
- * 
- * [WPPCD_Post order_by_number='off' taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
- * 
- * [WPPCD_Post _blank='on' taxs='12,34,56,67' post_type='product' term_name='product_tag' term_link='off' posts_per_page='10']
- * 
- * *********************
- * OTHERS INFORMATION and LINKS:
- * Plugin WP URL: https://wordpress.org/plugins/post-classified-for-docs/
- * *********************
- * Text Domain: wppcd
+ * Version: 2.0.0
+ * Requires at least: 5.0
+ * Tested up to: 6.8
+ * Requires PHP: 7.0
+ * Text Domain: post-classified-for-docs
+ * Domain Path: /languages
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * @package BizzDocMaker
+ * @since 2.0.0
  */
 
-
-if ( !defined( 'ABSPATH' ) ) {
-    die();
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-if ( !defined( 'WPPCD_VERSION' ) ) {
-    define( 'WPPCD_VERSION', '1.2.0.4');
-}
-if( !defined( 'WPPCD_CAPABILITY' ) ){
-    $wppcd_addons_capability = apply_filters( 'wppcd_addons_menu_capability', 'manage_woocommerce' );
-    define( 'WPPCD_CAPABILITY', $wppcd_addons_capability );
+// Define main plugin file constant.
+if ( ! defined( 'BIZZDOCMAKER_MAIN_FILE' ) ) {
+	define( 'BIZZDOCMAKER_MAIN_FILE', __FILE__ );
 }
 
-if ( !defined( 'WPPCD_NAME' ) ) {
-    define( 'WPPCD_NAME', 'UltraAddons - Addons Plugin');
-}
-if ( !defined( 'WPPCD_MAIN_FILE' ) ) {
-    define( 'WPPCD_MAIN_FILE', __FILE__ );
-}
+// Require autoloader.
+require_once __DIR__ . '/src/Autoloader.php';
 
-if ( !defined( 'WPPCD_BASE_NAME' ) ) {
-    define( 'WPPCD_BASE_NAME', plugin_basename( __FILE__ ) );
-}
+// Register autoloader.
+$autoloader = new BizzDocMaker\Autoloader( __DIR__ . '/src' );
+$autoloader->register();
 
-if ( !defined( 'WPPCD_MENU_SLUG' ) ) {
-    define( 'WPPCD_MENU_SLUG', 'post-classified-for-docs' );
-}
-if( !defined( 'WPPCD_PLUGIN' ) ){
-    define( 'WPPCD_PLUGIN', 'post-classified-for-docs/init.php' );
+// Initialize plugin.
+function bizzdocmaker_init() {
+	return BizzDocMaker\Plugin::instance();
 }
 
+// Start the plugin.
+bizzdocmaker_init();
 
-if ( !defined( 'WPPCD_BASE_URL' ) ) {
-    define( "WPPCD_BASE_URL", plugins_url() . '/'. plugin_basename( dirname( __FILE__ ) ) . '/' );
+// Backward compatibility - Keep old shortcode working.
+if ( ! function_exists( 'bizzdocmaker_legacy_shortcode' ) ) {
+	/**
+	 * Legacy shortcode handler for backward compatibility
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return string
+	 */
+	function bizzdocmaker_legacy_shortcode( $atts ) {
+		$shortcode = new BizzDocMaker\Frontend\Shortcode();
+		return $shortcode->render( $atts );
+	}
+	add_shortcode( 'WPPCD_Post', 'bizzdocmaker_legacy_shortcode' );
 }
 
-if ( !defined( 'WPPCD_BASE_DIR' ) ) {
-    define( "WPPCD_BASE_DIR", str_replace( '\\', '/', dirname( __FILE__ ) ) );
+// Add new shortcode.
+if ( ! function_exists( 'bizzdocmaker_shortcode' ) ) {
+	/**
+	 * Main shortcode handler
+	 *
+	 * @param array $atts Shortcode attributes.
+	 * @return string
+	 */
+	function bizzdocmaker_shortcode( $atts ) {
+		$shortcode = new BizzDocMaker\Frontend\Shortcode();
+		return $shortcode->render( $atts );
+	}
+	add_shortcode( 'bizzdocmaker', 'bizzdocmaker_shortcode' );
 }
-if ( !defined( 'WPPCD_META_KEY' ) ) {
-    define( "WPPCD_META_KEY", 'wppcd_post_order_number' );
-}
-
-
-
-
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-//Including File
-include_once WPPCD_BASE_DIR . '/includes/load-scripts.php';
-include_once WPPCD_BASE_DIR . '/includes/functions.php';
-
-//Classes including here
-include_once WPPCD_BASE_DIR . '/app/shortcode.php';
-include_once WPPCD_BASE_DIR . '/app/admin-handle.php';
-
-add_shortcode('WPPCD_Post',['WPPCD\Shortcode','init']);
 
 
