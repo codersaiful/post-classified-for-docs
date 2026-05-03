@@ -9,7 +9,7 @@
  * 
  * Version: 1.2.0
  * Requires at least:    4.0.0
- * Tested up to:         6.8
+ * Tested up to:         6.9
  * 
  * *********************
  * SHORTCODE EXAMPLE: 

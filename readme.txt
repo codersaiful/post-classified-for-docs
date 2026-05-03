@@ -2,7 +2,7 @@
 Contributors: codersaiful
 Tags: product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 1.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
