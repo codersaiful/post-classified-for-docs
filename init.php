@@ -7,7 +7,7 @@
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * 
- * Version: 2.0.0
+ * Version: 2.0.2
  * Requires at least:    4.0.0
  * Tested up to:         6.9
  * 
@@ -41,7 +41,7 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'WPPCD_VERSION' ) ) {
-    define( 'WPPCD_VERSION', '1.2.0.4');
+    define( 'WPPCD_VERSION', '2.0.2.0');
 }
 if( !defined( 'WPPCD_CAPABILITY' ) ){
     $wppcd_addons_capability = apply_filters( 'wppcd_addons_menu_capability', 'manage_woocommerce' );
