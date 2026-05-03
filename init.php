@@ -7,7 +7,7 @@
  * Author: Saiful Islam
  * Author URI: https://profiles.wordpress.org/codersaiful/#content-plugins
  * 
- * Version: 1.2.0
+ * Version: 2.0.0
  * Requires at least:    4.0.0
  * Tested up to:         6.9
  * 

@@ -3,7 +3,7 @@ Contributors: codersaiful
 Tags: product list, taxonomy wise post, category wise post, site map, site xml
 Requires at least: 4.0.0
 Tested up to: 6.9
-Stable tag: 1.2.0
+Stable tag: 2.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -84,6 +84,9 @@ use taxs attr. include ID of your Category/Taxnomy.
 
 
 == Changelog ==
+
+= 2.0.0 =
+* Major update with new features and improvements
 
 = 1.1 =
 * Readme update and stable tag update
